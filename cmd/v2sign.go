@@ -1,33 +1,36 @@
-// cmd/version.go
 package cmd
 
 import (
-  "fmt"
 	"et/config"
+	"fmt"
 	"log"
 	"strings"
 
 	"regexp"
 
 	"github.com/go-resty/resty/v2"
-  "github.com/spf13/cobra"
+	"github.com/spf13/cobra"
 )
 
+type v2sign struct {
+}
+
 func init() {
-  rootCmd.AddCommand(v2signCmd)
+	rootCmd.AddCommand(v2signCmd)
 }
 
 var v2signCmd = &cobra.Command{
-  Use:   "v2sign",
-  Short: "v2ex签到",
-  Long:  `All software has versions. This is Hugo's`,
-  Run: func(cmd *cobra.Command, args []string) {
-    run()
-  },
+	Use:   "v2sign",
+	Short: "v2ex签到",
+	Long:  `All software has versions. This is Hugo's`,
+	Run: func(cmd *cobra.Command, args []string) {
+		var cls v2sign
+		cls.run()
+	},
 }
 
-func run (){
-  info := config.BaseInfo{}
+func (v2sign) run() {
+	info := config.BaseInfo{}
 	conf := info.GetConf()
 	client := resty.New()
 

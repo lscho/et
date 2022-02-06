@@ -11,6 +11,11 @@ import (
 //解析yml文件
 type BaseInfo struct {
 	V2Config V2Config `yaml:"v2config"`
+	TbConfig TbConfig `yaml:"tbconfig"`
+}
+
+type TbConfig struct {
+	Bduss string `yaml:"bduss"`
 }
 
 type V2Config struct {
